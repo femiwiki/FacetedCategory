@@ -19,7 +19,7 @@ class MainTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\FacetedCategory\Main::splitTerm
+	 * @covers \MediaWiki\Extension\FacetedCategory\Hooks\Main::splitTerm
 	 * @dataProvider provideSplitTerm
 	 *
 	 * @param array|null $expected
