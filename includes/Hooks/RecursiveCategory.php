@@ -37,9 +37,15 @@ class RecursiveCategory implements
 					continue;
 				}
 				$parentTitle = Title::newFromText( $parentText );
+				if ( defined( 'MW_VERSION' ) && version_compare( MW_VERSION, '1.37', '>=' ) ) {
+					// @phan-suppress-next-line PhanUndeclaredMethod
+					$sort = $parserOutput->getPageProperty( 'defaultsort' );
+				} else {
+					$sort = $parserOutput->getProperty( 'defaultsort' );
+				}
 				$parserOutput->addCategory(
 					$parentTitle->getText(),
-					$parserOutput->getPageProperty( 'defaultsort' ) ?: ''
+					$sort ?: ''
 				);
 			}
 		}
