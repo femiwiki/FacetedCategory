@@ -15,4 +15,4 @@ If you still use those versions of MediaWiki, please use REL1_35 branch instead 
 
 ## Previous Releases
 
-- [REL1_35](https://github.com/femiwiki/AchievementBadges/blob/REL1_35/CHANGELOG.md)
+- [REL1_35](https://github.com/femiwiki/FacetedCategory/blob/REL1_35/CHANGELOG.md)
