@@ -2,6 +2,10 @@
 
 Versions and bullets are arranged chronologically from latest to oldest.
 
+## v1.1.2 (Unreleased)
+
+- Fix conditionally uncollapsible categories.
+
 ## v1.1.1
 
 - Added support for the native categorizing syntax. (https://github.com/femiwiki/FacetedCategory/issues/151)
