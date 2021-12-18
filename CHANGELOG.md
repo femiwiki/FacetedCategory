@@ -2,7 +2,7 @@
 
 Versions and bullets are arranged chronologically from latest to oldest.
 
-## v1.1.2 (Unreleased)
+## v1.1.2
 
 - Fix conditionally uncollapsible categories.
 
