@@ -40,9 +40,14 @@ class RecursiveCategory implements
 					continue;
 				}
 				$parentTitle = Title::newFromText( $parentText );
+				$sort = $parserOutput->getPageProperty( 'defaultsort' );
+				// T301915
+				if ( $sort === false || $sort === null ) {
+					$sort = '';
+				}
 				$parserOutput->addCategory(
 					$parentTitle->getText(),
-					$parserOutput->getPageProperty( 'defaultsort' ) ?: ''
+					$sort
 				);
 			}
 		}
