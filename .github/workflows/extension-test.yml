@@ -135,7 +135,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /home/runner/cache
-          key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('**/*.lock') }}
+          key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('**/*.lock') }}-1
       - name: Setup PHP Action
         if: ${{ matrix.stage == 'phan' }}
         uses: shivammathur/setup-php@v2
