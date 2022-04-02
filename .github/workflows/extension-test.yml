@@ -119,7 +119,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /home/runner/src
-          key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-b42e1abf-${{ hashFiles('.github/workflows/dependencies') }}
+          key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('.github/workflows/dependencies') }}
       - name: Download MediaWiki and extensions
         run: |
           cd /home/runner
@@ -136,7 +136,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /home/runner/cache
-          key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('**/*.lock') }}-1
+          key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('**/*.lock') }}
       - name: Setup PHP Action
         if: ${{ matrix.stage == 'phan' }}
         uses: shivammathur/setup-php@v2
@@ -160,6 +160,7 @@ jobs:
           # Composer install
           if [ "${{ matrix.stage }}" == 'phan' ] || [ "${{ matrix.stage }}" == 'coverage' ]; then
             docker run \
+              --entrypoint quibble-with-supervisord \
               -e ZUUL_PROJECT=mediawiki/extensions/"${{ github.event.repository.name }}" \
               -v "$(pwd)"/cache:/cache \
               -v "$(pwd)"/src:/workspace/src \
@@ -179,8 +180,9 @@ jobs:
               --color
           elif [ "${{ matrix.stage }}" == 'coverage' ]; then
             # MW1.35+ requires PHP7.3 but quibble-coverage is not.
-            if [ "${MEDIAWIKI_VERSION}" == master ]; then
+            if [ "${MEDIAWIKI_VERSION}" == 'master' ]; then
               docker run \
+                --entrypoint quibble-with-supervisord \
                 -e ZUUL_PROJECT=mediawiki/extensions/"${{ github.event.repository.name }}" \
                 -v "$(pwd)"/cache:/cache \
                 -v "$(pwd)"/src:/workspace/src \
