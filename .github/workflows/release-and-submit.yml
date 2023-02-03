@@ -37,7 +37,6 @@ jobs:
           yarn --prod
           tar --exclude-vcs -C .. -zcvf "../${{ steps.tag_name.outputs.tag_name }}.tar.gz" "$(basename "$(pwd)")"
           mv ../${{ steps.tag_name.outputs.tag_name }}.tar.gz ./
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
