@@ -26,6 +26,7 @@ class RecursiveCategory implements
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
+	 * @param JobQueueGroup $jobQueueGroup
 	 */
 	public function __construct( ILoadBalancer $loadBalancer, JobQueueGroup $jobQueueGroup ) {
 		$this->loadBalancer = $loadBalancer;
